@@ -32,6 +32,8 @@ Selain itu, aplikasi ini telah dilengkapi dengan fitur logger menggunakan Winsto
 - Setiap permintaan API harus menyertakan token untuk akses.
 - API untuk login dan sign up pengguna.
 - Fitur logger dengan Winston untuk mencatat aktivitas aplikasi.
+
+
 ## Instalasi dan Penggunaan
 
 1. Clone repositori ini:
@@ -52,19 +54,29 @@ Selain itu, aplikasi ini telah dilengkapi dengan fitur logger menggunakan Winsto
   npm install
 ```
 
-4. Start the server
+4. Konfigurasi database MySQL pada file `.env` copy file .env.example:
+
+```bash
+  DB_HOST=hostname
+  DB_DATABASE=database
+  DB_USERNAME=username
+  DB_PASSWORD=password
+  DB_DIALECT=dialect
+```
+
+5. Start the server
 
 ```bash
   npm run start
 ```
 
-5. Jalankan Migrasi untuk membuat skema table dalam database:
+6. Jalankan Migrasi untuk membuat skema table dalam database:
 
 ```bash
   npx sequelize-cli db:migrate
 ```
 
-6. Jalankan Server:
+7. Jalankan Server:
 
 ```bash
   npm run start
