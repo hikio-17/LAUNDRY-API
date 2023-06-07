@@ -64,7 +64,7 @@ Selain itu, aplikasi ini telah dilengkapi dengan fitur logger menggunakan Winsto
   npx sequelize-cli db:migrate
 ```
 
-6. Jlankan Server:
+6. Jalankan Server:
 
 ```bash
   npm run start

@@ -15,6 +15,7 @@ const logger = require('./middleware/logger');
 const { errorHandler } = require('./middleware/errorHandler');
 
 const app = express();
+require('dotenv').config();
 
 /** MIDDLEWARE */
 app.use(cors());
