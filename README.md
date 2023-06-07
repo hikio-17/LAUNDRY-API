@@ -64,12 +64,6 @@ Selain itu, aplikasi ini telah dilengkapi dengan fitur logger menggunakan Winsto
   DB_DIALECT=dialect
 ```
 
-5. Start the server
-
-```bash
-  npm run start
-```
-
 6. Jalankan Migrasi untuk membuat skema table dalam database:
 
 ```bash
