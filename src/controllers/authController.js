@@ -20,7 +20,6 @@ const userSignupHandler = asyncHandler(async (req, res) => {
 });
 
 const userSignHandler = asyncHandler(async (req, res) => {
-  console.log(req.body);
   const { email, password } = req.body;
   const { id, username, role } = await userSign({ email, password });
   const accessToken = await createAccessToken({ id, username, role });

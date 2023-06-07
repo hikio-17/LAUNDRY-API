@@ -37,7 +37,7 @@ const findOrderById = async (id) => {
 const verifyOrderAccess = async (orderId, userAccess) => {
   const order = await findOrderById(orderId);
 
-  if (order.userId !== userAccess.id && userAccess !== 'admin') {
+  if (order.userId !== userAccess.id && userAccess.role !== 'admin') {
     throw new AuthorizationError('Anda tidak berhak mengakses resource ini');
   }
 };
@@ -54,10 +54,19 @@ const deleteOrderById = async (id) => {
   await order.destroy();
 };
 
+const updateStatusOrder = async (status, orderId) => {
+  const order = await findOrderById(orderId);
+
+  order.update({
+    status,
+  });
+};
+
 module.exports = {
   addOrder,
   verifyOrderAccess,
   findAllOrder,
   findOrderById,
   deleteOrderById,
+  updateStatusOrder,
 };

@@ -1,12 +1,12 @@
 const { body, validationResult } = require('express-validator');
 const InvariantError = require('../exeptions/InvariantError');
 
-exports.validateUserLogin = [
-  body('email')
-    .notEmpty().withMessage('Email tidak boleh kosong')
-    .isEmail().withMessage('Masukkan email yang valid'),
-  body('password')
-    .notEmpty().withMessage('Passsword tidak boleh kosong'),
+const optionStatus = ['pending', 'processing', 'completed', 'cancelled'];
+
+exports.validateUpdateStatus = [
+  body('status')
+    .notEmpty().withMessage('Status tidak boleh kosong')
+    .isIn(optionStatus).withMessage('Status tidak sesuai dengan option'),
 
   (req, res, next) => {
     const errors = validationResult(req);

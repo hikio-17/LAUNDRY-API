@@ -53,7 +53,14 @@ module.exports = (sequelize, DataTypes) => {
           await sequelize?.models.AuditLog.create({
             tableName: 'Users',
             task: 'Insert',
-            description: `Insert user with userId '${user.id}'`,
+            description: `Insert user with data ${JSON.stringify(user.toJSON())}`,
+          });
+        },
+        afterDestroy: async (user) => {
+          await sequelize?.models.AuditLog.create({
+            tableName: 'Users',
+            task: 'Delete',
+            description: `Delete user with data ${JSON.stringify(user.toJSON())}`,
           });
         },
       },

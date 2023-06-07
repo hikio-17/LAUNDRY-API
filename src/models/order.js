@@ -43,6 +43,29 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 'pending',
     },
   }, {
+    hooks: {
+      afterCreate: async (order) => {
+        await sequelize.models.AuditLog.create({
+          tableName: 'Orders',
+          task: 'Insert',
+          description: `Insert Order with data ${JSON.stringify(order.toJSON())}`,
+        });
+      },
+      afterUpdate: async (order) => {
+        await sequelize.models.AuditLog.create({
+          tableName: 'Orders',
+          task: 'Update',
+          description: `Update Order with data ${JSON.stringify(order.toJSON())}`,
+        });
+      },
+      afterDestroy: async (order) => {
+        await sequelize.models.AuditLog.create({
+          tableName: 'Orders',
+          task: 'Delete',
+          description: `Delete Order with data ${JSON.stringify(order.toJSON())}`,
+        });
+      },
+    },
     sequelize,
     modelName: 'Order',
   });

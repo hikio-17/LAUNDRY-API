@@ -1,38 +1,41 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-console */
 /* eslint-disable import/no-dynamic-require */
 const express = require('express');
+const morgan = require('morgan');
+const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
-const ClientError = require('./exeptions/ClientError');
+
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('../swagger.json');
+
 const db = require('./models');
+const logger = require('./middleware/logger');
+const { errorHandler } = require('./middleware/errorHandler');
 
 const app = express();
 
+/** MIDDLEWARE */
+app.use(cors());
+app.use(morgan('combined', { stream: logger.stream }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+/** MAIN ROUTE */
 const routesDir = path.join(__dirname, 'routes');
 fs.readdirSync(routesDir).map((r) => {
   app.use('/api', require(`${routesDir}/${r}`));
 });
 
-app.use((err, req, res, next) => {
-  console.log(err instanceof ClientError);
-  if (err instanceof ClientError) {
-    res.status(err.statusCode).json({
-      status: 'fail',
-      message: err.message,
-    });
-    return;
-  }
-  console.log(err);
-  res.status(500).send({
-    status: 'error',
-    message: err || 'Internal server error',
-  });
-  next();
-});
+/** ROUTE DOCUMENTATION API */
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-const PORT = 5000;
+/** ROUTE ERROR HANDLER */
+app.use(errorHandler);
+
+/** CONNECT TO DB AND RUN SERVER */
+const PORT = process.env.PORT || 5000;
 
 db.sequelize.authenticate().then(async () => {
   try {

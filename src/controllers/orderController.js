@@ -1,5 +1,5 @@
 const asyncHandler = require('express-async-handler');
-const { addOrder, findAllOrder, verifyOrderAccess, findOrderById, deleteOrderById } = require('../services/orderService');
+const { addOrder, findAllOrder, verifyOrderAccess, findOrderById, deleteOrderById, updateStatusOrder } = require('../services/orderService');
 
 const addOrderHandler = asyncHandler(async (req, res) => {
   const { productId } = req.params;
@@ -8,7 +8,7 @@ const addOrderHandler = asyncHandler(async (req, res) => {
 
   const order = await addOrder(amount, productId, userId);
 
-  res.status(200).json({
+  res.status(201).json({
     status: 'success',
     message: 'Order berhasil dibuat',
     data: {
@@ -42,9 +42,21 @@ const getOrderByIdHandler = asyncHandler(async (req, res) => {
   });
 });
 
+const updateStatusOrderHandler = asyncHandler(async (req, res) => {
+  const { orderId } = req.params;
+  const { status } = req.body;
+
+  await updateStatusOrder(status, orderId);
+
+  res.status(200).json({
+    status: 'success',
+    message: `Status order dengan id '${orderId}' berhasil diperbarui`,
+  });
+});
+
 const deleteOrderByIdHandler = asyncHandler(async (req, res) => {
   const { orderId } = req.params;
-  await verifyOrderAccess(orderId);
+  await verifyOrderAccess(orderId, req.user);
   await deleteOrderById(orderId);
 
   res.status(200).json({
@@ -57,5 +69,6 @@ module.exports = {
   addOrderHandler,
   getAllOrderHandler,
   getOrderByIdHandler,
+  updateStatusOrderHandler,
   deleteOrderByIdHandler,
 };
