@@ -23,7 +23,7 @@ exports.authCheck = asynchandler(async (req, res, next) => {
 
 exports.adminCheck = asynchandler(async (req, res, next) => {
   if (req.user.role !== 'admin') {
-    throw new AuthorizationError('Anda tidak berhas mengakses resource ini');
+    throw new AuthorizationError('Anda tidak berhak mengakses resource ini');
   }
 
   next();

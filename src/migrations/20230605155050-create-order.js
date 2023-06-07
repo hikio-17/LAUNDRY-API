@@ -37,15 +37,15 @@ module.exports = {
         type: Sequelize.ENUM('pending', 'processing', 'completed', 'cancelled'),
         defaultValue: 'pending',
       },
-      createddAt: {
-        allowNull: false,
+      createdAt: {
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+        allowNull: false,
       },
       updatedAt: {
-        allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+        allowNull: false,
       },
     });
   },

@@ -6,8 +6,7 @@ exports.validateUserLogin = [
   body('email')
     .notEmpty()
     .withMessage('Email tidak boleh kosong')
-    .isEmail()
-    .withMessage('masukkan email valid.'),
+    .isEmail(),
   body('password')
     .notEmpty()
     .withMessage('Passsword tidak boleh kosong'),
