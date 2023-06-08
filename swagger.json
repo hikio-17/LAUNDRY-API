@@ -1,1301 +1,752 @@
 {
-   "swagger": "2.0",
-   "info": {
-     "version": "1.0",
-     "title": "Laundry API",
-     "contact": {}
-   },
-   "host": "example.com",
-   "basePath": "/:DefaultParameterValue/api",
-   "securityDefinitions": {},
-   "schemes": [
-     "http"
-   ],
-   "consumes": [
-     "application/json"
-   ],
-   "produces": [
-     "application/json"
-   ],
-   "paths": {
-     "/auth/signup": {
-       "post": {
-         "summary": "Add User role Admin",
-         "tags": [
-           "[No Test] Prerequiresite"
-         ],
-         "operationId": "AddUserroleAdmin",
-         "deprecated": false,
-         "produces": [
-           "application/json"
-         ],
-         "parameters": [
-           {
-             "name": "Body",
-             "in": "body",
-             "required": true,
-             "description": "",
-             "schema": {
-               "$ref": "#/definitions/AddUserroleAdminRequest"
-             }
-           }
-         ],
-         "responses": {
-           "200": {
-             "description": "",
-             "headers": {}
-           }
-         }
-       }
-     },
-     "/auth/signin": {
-       "post": {
-         "summary": "Login with User_B not role Admin",
-         "tags": [
-           "[No Test] Prerequiresite"
-         ],
-         "operationId": "LoginwithUser_BnotroleAdmin",
-         "deprecated": false,
-         "produces": [
-           "application/json"
-         ],
-         "parameters": [
-           {
-             "name": "Body",
-             "in": "body",
-             "required": true,
-             "description": "",
-             "schema": {
-               "$ref": "#/definitions/LoginwithUser_BnotroleAdminRequest"
-             }
-           }
-         ],
-         "responses": {
-           "200": {
-             "description": "",
-             "headers": {}
-           }
-         }
-       }
-     },
-     "/products": {
-       "post": {
-         "summary": "Add Product 'Laundry Kiloan'  with User role Admin",
-         "tags": [
-           "[No Test] Prerequiresite"
-         ],
-         "operationId": "AddProduct'LaundryKiloan'withUserroleAdmin",
-         "deprecated": false,
-         "produces": [
-           "application/json"
-         ],
-         "parameters": [
-           {
-             "name": "Authorization",
-             "in": "header",
-             "required": true,
-             "type": "string",
-             "description": ""
-           },
-           {
-             "name": "Body",
-             "in": "body",
-             "required": true,
-             "description": "",
-             "schema": {
-               "$ref": "#/definitions/AddProduct%27LaundryKiloan%27withUserroleAdminRequest"
-             }
-           }
-         ],
-         "responses": {
-           "200": {
-             "description": "",
-             "headers": {}
-           }
-         },
-         "security": []
-       },
-       "get": {
-         "summary": "Get All Products",
-         "tags": [
-           "Products"
-         ],
-         "operationId": "GetAllProducts",
-         "deprecated": false,
-         "produces": [
-           "application/json"
-         ],
-         "parameters": [
-           {
-             "name": "Authorization",
-             "in": "header",
-             "required": true,
-             "type": "string",
-             "description": ""
-           }
-         ],
-         "responses": {
-           "200": {
-             "description": "",
-             "headers": {}
-           }
-         },
-         "security": []
-       }
-     },
-     "/users": {
-       "get": {
-         "summary": "Get All User with not role Admin",
-         "tags": [
-           "Users"
-         ],
-         "operationId": "GetAllUserwithnotroleAdmin",
-         "deprecated": false,
-         "produces": [
-           "application/json"
-         ],
-         "parameters": [
-           {
-             "name": "Authorization",
-             "in": "header",
-             "required": true,
-             "type": "string",
-             "description": ""
-           }
-         ],
-         "responses": {
-           "200": {
-             "description": "",
-             "headers": {}
-           }
-         },
-         "security": []
-       }
-     },
-     "/users/{badParamsUserId}": {
-       "get": {
-         "summary": "Get User by Id with bad params userId",
-         "tags": [
-           "Users"
-         ],
-         "operationId": "GetUserbyIdwithbadparamsuserId",
-         "deprecated": false,
-         "produces": [
-           "application/json"
-         ],
-         "parameters": [
-           {
-             "name": "Authorization",
-             "in": "header",
-             "required": true,
-             "type": "string",
-             "description": ""
-           },
-           {
-             "name": "badParamsUserId",
-             "in": "path",
-             "required": true,
-             "type": "string",
-             "description": ""
-           }
-         ],
-         "responses": {
-           "200": {
-             "description": "",
-             "headers": {}
-           }
-         },
-         "security": []
-       },
-       "delete": {
-         "summary": "Delete User by Id with bad params userId",
-         "tags": [
-           "Users"
-         ],
-         "operationId": "DeleteUserbyIdwithbadparamsuserId",
-         "deprecated": false,
-         "produces": [
-           "application/json"
-         ],
-         "parameters": [
-           {
-             "name": "Authorization",
-             "in": "header",
-             "required": true,
-             "type": "string",
-             "description": ""
-           },
-           {
-             "name": "badParamsUserId",
-             "in": "path",
-             "required": true,
-             "type": "string",
-             "description": ""
-           }
-         ],
-         "responses": {
-           "200": {
-             "description": "",
-             "headers": {}
-           }
-         },
-         "security": []
-       }
-     },
-     "/users/{idUserA}": {
-       "get": {
-         "summary": "Get User by Id with  valid owner access or role Admin",
-         "tags": [
-           "Users"
-         ],
-         "operationId": "GetUserbyIdwithvalidowneraccessorroleAdmin",
-         "deprecated": false,
-         "produces": [
-           "application/json"
-         ],
-         "parameters": [
-           {
-             "name": "Authorization",
-             "in": "header",
-             "required": true,
-             "type": "string",
-             "description": ""
-           },
-           {
-             "name": "idUserA",
-             "in": "path",
-             "required": true,
-             "type": "string",
-             "description": ""
-           }
-         ],
-         "responses": {
-           "200": {
-             "description": "",
-             "headers": {}
-           }
-         },
-         "security": []
-       },
-       "delete": {
-         "summary": "Get User by Id with  NOT  valid User role Admin",
-         "tags": [
-           "Users"
-         ],
-         "operationId": "GetUserbyIdwithNOTvalidUserroleAdmin",
-         "deprecated": false,
-         "produces": [
-           "application/json"
-         ],
-         "parameters": [
-           {
-             "name": "Authorization",
-             "in": "header",
-             "required": true,
-             "type": "string",
-             "description": ""
-           },
-           {
-             "name": "idUserA",
-             "in": "path",
-             "required": true,
-             "type": "string",
-             "description": ""
-           }
-         ],
-         "responses": {
-           "200": {
-             "description": "",
-             "headers": {}
-           }
-         },
-         "security": []
-       }
-     },
-     "/products/{badParamsProductId}": {
-       "get": {
-         "summary": "Get Product With bad params Id",
-         "tags": [
-           "Products"
-         ],
-         "operationId": "GetProductWithbadparamsId",
-         "deprecated": false,
-         "produces": [
-           "application/json"
-         ],
-         "parameters": [
-           {
-             "name": "Authorization",
-             "in": "header",
-             "required": true,
-             "type": "string",
-             "description": ""
-           },
-           {
-             "name": "badParamsProductId",
-             "in": "path",
-             "required": true,
-             "type": "string",
-             "description": ""
-           }
-         ],
-         "responses": {
-           "200": {
-             "description": "",
-             "headers": {}
-           }
-         },
-         "security": []
-       },
-       "put": {
-         "summary": "Update Product with Bad Params ProductId",
-         "tags": [
-           "Products"
-         ],
-         "operationId": "UpdateProductwithBadParamsProductId",
-         "deprecated": false,
-         "produces": [
-           "application/json"
-         ],
-         "parameters": [
-           {
-             "name": "Authorization",
-             "in": "header",
-             "required": true,
-             "type": "string",
-             "description": ""
-           },
-           {
-             "name": "Body",
-             "in": "body",
-             "required": true,
-             "description": "",
-             "schema": {
-               "$ref": "#/definitions/UpdateProductwithBadParamsProductIdRequest"
-             }
-           },
-           {
-             "name": "badParamsProductId",
-             "in": "path",
-             "required": true,
-             "type": "string",
-             "description": ""
-           }
-         ],
-         "responses": {
-           "200": {
-             "description": "",
-             "headers": {}
-           }
-         },
-         "security": []
-       },
-       "delete": {
-         "summary": "Delete Product with Bad Params ProductId",
-         "tags": [
-           "Products"
-         ],
-         "operationId": "DeleteProductwithBadParamsProductId",
-         "deprecated": false,
-         "produces": [
-           "application/json"
-         ],
-         "parameters": [
-           {
-             "name": "Authorization",
-             "in": "header",
-             "required": true,
-             "type": "string",
-             "description": ""
-           },
-           {
-             "name": "badParamsProductId",
-             "in": "path",
-             "required": true,
-             "type": "string",
-             "description": ""
-           }
-         ],
-         "responses": {
-           "200": {
-             "description": "",
-             "headers": {}
-           }
-         },
-         "security": []
-       }
-     },
-     "/products/{productId}": {
-       "get": {
-         "summary": "Get Product by Id",
-         "tags": [
-           "Products"
-         ],
-         "operationId": "GetProductbyId",
-         "deprecated": false,
-         "produces": [
-           "application/json"
-         ],
-         "parameters": [
-           {
-             "name": "Authorization",
-             "in": "header",
-             "required": true,
-             "type": "string",
-             "description": ""
-           },
-           {
-             "name": "productId",
-             "in": "path",
-             "required": true,
-             "type": "string",
-             "description": ""
-           }
-         ],
-         "responses": {
-           "200": {
-             "description": "",
-             "headers": {}
-           }
-         },
-         "security": []
-       },
-       "put": {
-         "summary": "Update Product with not user role Admin",
-         "tags": [
-           "Products"
-         ],
-         "operationId": "UpdateProductwithnotuserroleAdmin",
-         "deprecated": false,
-         "produces": [
-           "application/json"
-         ],
-         "parameters": [
-           {
-             "name": "Authorization",
-             "in": "header",
-             "required": true,
-             "type": "string",
-             "description": ""
-           },
-           {
-             "name": "Body",
-             "in": "body",
-             "required": true,
-             "description": "",
-             "schema": {
-               "$ref": "#/definitions/UpdateProductwithnotuserroleAdminRequest"
-             }
-           },
-           {
-             "name": "productId",
-             "in": "path",
-             "required": true,
-             "type": "string",
-             "description": ""
-           }
-         ],
-         "responses": {
-           "200": {
-             "description": "",
-             "headers": {}
-           }
-         },
-         "security": []
-       },
-       "delete": {
-         "summary": "Delete Product not User role Admin",
-         "tags": [
-           "Products"
-         ],
-         "operationId": "DeleteProductnotUserroleAdmin",
-         "deprecated": false,
-         "produces": [
-           "application/json"
-         ],
-         "parameters": [
-           {
-             "name": "Authorization",
-             "in": "header",
-             "required": true,
-             "type": "string",
-             "description": ""
-           },
-           {
-             "name": "productId",
-             "in": "path",
-             "required": true,
-             "type": "string",
-             "description": ""
-           }
-         ],
-         "responses": {
-           "200": {
-             "description": "",
-             "headers": {}
-           }
-         },
-         "security": []
-       }
-     },
-     "/products/{idProductDryCleaning}/orders": {
-       "post": {
-         "summary": "Add Order with Authentication USER_A",
-         "tags": [
-           "Orders"
-         ],
-         "operationId": "AddOrderwithAuthenticationUSER_A",
-         "deprecated": false,
-         "produces": [
-           "application/json"
-         ],
-         "parameters": [
-           {
-             "name": "Authorization",
-             "in": "header",
-             "required": true,
-             "type": "string",
-             "description": ""
-           },
-           {
-             "name": "Body",
-             "in": "body",
-             "required": true,
-             "description": "",
-             "schema": {
-               "$ref": "#/definitions/AddOrderwithAuthenticationUSER_ARequest"
-             }
-           },
-           {
-             "name": "idProductDryCleaning",
-             "in": "path",
-             "required": true,
-             "type": "string",
-             "description": ""
-           }
-         ],
-         "responses": {
-           "200": {
-             "description": "",
-             "headers": {}
-           }
-         },
-         "security": []
-       }
-     },
-     "/orders": {
-       "get": {
-         "summary": "Get All Order with Authentication USER_A",
-         "tags": [
-           "Orders"
-         ],
-         "operationId": "GetAllOrderwithAuthenticationUSER_A",
-         "deprecated": false,
-         "produces": [
-           "application/json"
-         ],
-         "parameters": [
-           {
-             "name": "Authorization",
-             "in": "header",
-             "required": true,
-             "type": "string",
-             "description": ""
-           }
-         ],
-         "responses": {
-           "200": {
-             "description": "",
-             "headers": {}
-           }
-         },
-         "security": []
-       }
-     },
-     "/orders/{orderIdUserA}": {
-       "get": {
-         "summary": "Get Detail  Order by Id with Authentication USER_A",
-         "tags": [
-           "Orders"
-         ],
-         "operationId": "GetDetailOrderbyIdwithAuthenticationUSER_A",
-         "deprecated": false,
-         "produces": [
-           "application/json"
-         ],
-         "parameters": [
-           {
-             "name": "Authorization",
-             "in": "header",
-             "required": true,
-             "type": "string",
-             "description": ""
-           },
-           {
-             "name": "orderIdUserA",
-             "in": "path",
-             "required": true,
-             "type": "string",
-             "description": ""
-           }
-         ],
-         "responses": {
-           "200": {
-             "description": "",
-             "headers": {}
-           }
-         },
-         "security": []
-       },
-       "delete": {
-         "summary": "Delete  Order by Id with not valid Owner access or Admin Role",
-         "tags": [
-           "Orders"
-         ],
-         "operationId": "DeleteOrderbyIdwithnotvalidOwneraccessorAdminRole",
-         "deprecated": false,
-         "produces": [
-           "application/json"
-         ],
-         "parameters": [
-           {
-             "name": "Authorization",
-             "in": "header",
-             "required": true,
-             "type": "string",
-             "description": ""
-           },
-           {
-             "name": "orderIdUserA",
-             "in": "path",
-             "required": true,
-             "type": "string",
-             "description": ""
-           }
-         ],
-         "responses": {
-           "200": {
-             "description": "",
-             "headers": {}
-           }
-         },
-         "security": []
-       }
-     },
-     "/orders/{orderIdUserB}": {
-       "put": {
-         "summary": "Update Status Order  by ID with bad status value",
-         "tags": [
-           "Orders"
-         ],
-         "operationId": "UpdateStatusOrderbyIDwithbadstatusvalue",
-         "deprecated": false,
-         "produces": [
-           "application/json"
-         ],
-         "parameters": [
-           {
-             "name": "Authorization",
-             "in": "header",
-             "required": true,
-             "type": "string",
-             "description": ""
-           },
-           {
-             "name": "Body",
-             "in": "body",
-             "required": true,
-             "description": "",
-             "schema": {
-               "$ref": "#/definitions/UpdateStatusOrderbyIDwithbadstatusvalueRequest"
-             }
-           },
-           {
-             "name": "orderIdUserB",
-             "in": "path",
-             "required": true,
-             "type": "string",
-             "description": ""
-           }
-         ],
-         "responses": {
-           "200": {
-             "description": "",
-             "headers": {}
-           }
-         },
-         "security": []
-       }
-     }
-   },
-   "definitions": {
-     "AddUserroleAdminRequest": {
-       "title": "AddUserroleAdminRequest",
-       "example": {
-         "username": "{{newUsernameAdmin}}",
-         "email": "{{newEmailUserAdmin}}",
-         "password": "{{newPasswordAdmin}}",
-         "role": "admin"
-       },
-       "type": "object",
-       "properties": {
-         "username": {
-           "type": "string"
-         },
-         "email": {
-           "type": "string"
-         },
-         "password": {
-           "type": "string"
-         },
-         "role": {
-           "type": "string"
-         }
-       },
-       "required": [
-         "username",
-         "email",
-         "password",
-         "role"
-       ]
-     },
-     "AddUser_BnotroleadminRequest": {
-       "title": "AddUser_BnotroleadminRequest",
-       "example": {
-         "username": "{{newUsernameB}}",
-         "email": "{{newEmailUserB}}",
-         "password": "{{newPasswordUserB}}",
-         "role": "user"
-       },
-       "type": "object",
-       "properties": {
-         "username": {
-           "type": "string"
-         },
-         "email": {
-           "type": "string"
-         },
-         "password": {
-           "type": "string"
-         },
-         "role": {
-           "type": "string"
-         }
-       },
-       "required": [
-         "username",
-         "email",
-         "password",
-         "role"
-       ]
-     },
-     "LoginwithUser_BnotroleAdminRequest": {
-       "title": "LoginwithUser_BnotroleAdminRequest",
-       "example": {
-         "email": "{{newEmailUserB}}",
-         "password": "{{newPasswordUserB}}"
-       },
-       "type": "object",
-       "properties": {
-         "email": {
-           "type": "string"
-         },
-         "password": {
-           "type": "string"
-         }
-       },
-       "required": [
-         "email",
-         "password"
-       ]
-     },
-     "LoginwithUserroleAdminRequest": {
-       "title": "LoginwithUserroleAdminRequest",
-       "example": {
-         "email": "{{newEmailUserAdmin}}",
-         "password": "{{newPasswordAdmin}}"
-       },
-       "type": "object",
-       "properties": {
-         "email": {
-           "type": "string"
-         },
-         "password": {
-           "type": "string"
-         }
-       },
-       "required": [
-         "email",
-         "password"
-       ]
-     },
-     "AddUserwithvalidpayloadRequest": {
-       "title": "AddUserwithvalidpayloadRequest",
-       "example": {
-         "username": "{{newUsernameA}}",
-         "email": "{{newEmailUserA}}",
-         "password": "{{newPasswordUserA}}",
-         "role": "user"
-       },
-       "type": "object",
-       "properties": {
-         "username": {
-           "type": "string"
-         },
-         "email": {
-           "type": "string"
-         },
-         "password": {
-           "type": "string"
-         },
-         "role": {
-           "type": "string"
-         }
-       },
-       "required": [
-         "username",
-         "email",
-         "password",
-         "role"
-       ]
-     },
-     "AddUserwithExistEmailRequest": {
-       "title": "AddUserwithExistEmailRequest",
-       "example": {
-         "username": "{{newUsernameA}}",
-         "email": "{{newEmailUserA}}",
-         "password": "{{newPasswordUserA}}",
-         "role": "user"
-       },
-       "type": "object",
-       "properties": {
-         "username": {
-           "type": "string"
-         },
-         "email": {
-           "type": "string"
-         },
-         "password": {
-           "type": "string"
-         },
-         "role": {
-           "type": "string"
-         }
-       },
-       "required": [
-         "username",
-         "email",
-         "password",
-         "role"
-       ]
-     },
-     "AddUserRequest": {
-       "title": "AddUserRequest",
-       "example": {
-         "username": "{{newUsernameA}}",
-         "email": "{{newEmailUserA}}",
-         "password": "{{newPasswordUserA}}",
-         "role": "user"
-       },
-       "type": "object",
-       "properties": {
-         "username": {
-           "type": "string"
-         },
-         "email": {
-           "type": "string"
-         },
-         "password": {
-           "type": "string"
-         },
-         "role": {
-           "type": "string"
-         }
-       },
-       "required": [
-         "username",
-         "email",
-         "password",
-         "role"
-       ]
-     },
-     "LoginwithInvalidPasswordRequest": {
-       "title": "LoginwithInvalidPasswordRequest",
-       "example": {
-         "email": "{{newEmailUserA}}",
-         "password": "xxxrgrtr"
-       },
-       "type": "object",
-       "properties": {
-         "email": {
-           "type": "string"
-         },
-         "password": {
-           "type": "string"
-         }
-       },
-       "required": [
-         "email",
-         "password"
-       ]
-     },
-     "LoginwithInvalidEmailRequest": {
-       "title": "LoginwithInvalidEmailRequest",
-       "example": {
-         "email": "xxxxxx",
-         "password": "{{newPasswordUserA}}"
-       },
-       "type": "object",
-       "properties": {
-         "email": {
-           "type": "string"
-         },
-         "password": {
-           "type": "string"
-         }
-       },
-       "required": [
-         "email",
-         "password"
-       ]
-     },
-     "LoginwithValidCredentialRequest": {
-       "title": "LoginwithValidCredentialRequest",
-       "example": {
-         "email": "{{newEmailUserA}}",
-         "password": "{{newPasswordUserA}}"
-       },
-       "type": "object",
-       "properties": {
-         "email": {
-           "type": "string"
-         },
-         "password": {
-           "type": "string"
-         }
-       },
-       "required": [
-         "email",
-         "password"
-       ]
-     },
-     "AddUser_AnotroleadminRequest": {
-       "title": "AddUser_AnotroleadminRequest",
-       "example": {
-         "username": "{{newUsernameA}}",
-         "email": "{{newEmailUserA}}",
-         "password": "{{newPasswordUserA}}",
-         "role": "user"
-       },
-       "type": "object",
-       "properties": {
-         "username": {
-           "type": "string"
-         },
-         "email": {
-           "type": "string"
-         },
-         "password": {
-           "type": "string"
-         },
-         "role": {
-           "type": "string"
-         }
-       },
-       "required": [
-         "username",
-         "email",
-         "password",
-         "role"
-       ]
-     },
-     "LoginwithUser_AnotroleAdminRequest": {
-       "title": "LoginwithUser_AnotroleAdminRequest",
-       "example": {
-         "email": "{{newEmailUserA}}",
-         "password": "{{newPasswordUserA}}"
-       },
-       "type": "object",
-       "properties": {
-         "email": {
-           "type": "string"
-         },
-         "password": {
-           "type": "string"
-         }
-       },
-       "required": [
-         "email",
-         "password"
-       ]
-     },
-     "AddProductwithNotuserroleadminRequest": {
-       "title": "AddProductwithNotuserroleadminRequest",
-       "example": {
-         "name": "testing",
-         "price": 20000
-       },
-       "type": "object",
-       "properties": {
-         "name": {
-           "type": "string"
-         },
-         "price": {
-           "type": "integer",
-           "format": "int32"
-         }
-       },
-       "required": [
-         "name",
-         "price"
-       ]
-     },
-     "AddProductwithUserroleAdminRequest": {
-       "title": "AddProductwithUserroleAdminRequest",
-       "example": {
-         "name": "Laundry Kiloan",
-         "price": 20000
-       },
-       "type": "object",
-       "properties": {
-         "name": {
-           "type": "string"
-         },
-         "price": {
-           "type": "integer",
-           "format": "int32"
-         }
-       },
-       "required": [
-         "name",
-         "price"
-       ]
-     },
-     "UpdateProductwithBadParamsProductIdRequest": {
-       "title": "UpdateProductwithBadParamsProductIdRequest",
-       "example": {
-         "name": "xxxxx",
-         "price": 20000
-       },
-       "type": "object",
-       "properties": {
-         "name": {
-           "type": "string"
-         },
-         "price": {
-           "type": "integer",
-           "format": "int32"
-         }
-       },
-       "required": [
-         "name",
-         "price"
-       ]
-     },
-     "UpdateProductwithnotuserroleAdminRequest": {
-       "title": "UpdateProductwithnotuserroleAdminRequest",
-       "example": {
-         "name": "xxxxxx",
-         "price": 20000
-       },
-       "type": "object",
-       "properties": {
-         "name": {
-           "type": "string"
-         },
-         "price": {
-           "type": "integer",
-           "format": "int32"
-         }
-       },
-       "required": [
-         "name",
-         "price"
-       ]
-     },
-     "UpdateProductwithUserroleAdminRequest": {
-       "title": "UpdateProductwithUserroleAdminRequest",
-       "example": {
-         "name": "Ironing",
-         "price": 20000
-       },
-       "type": "object",
-       "properties": {
-         "name": {
-           "type": "string"
-         },
-         "price": {
-           "type": "integer",
-           "format": "int32"
-         }
-       },
-       "required": [
-         "name",
-         "price"
-       ]
-     },
-     "AddProduct'LaundryKiloan'withUserroleAdminRequest": {
-       "title": "AddProduct'LaundryKiloan'withUserroleAdminRequest",
-       "example": {
-         "name": "Laundry Kiloan",
-         "price": 7000
-       },
-       "type": "object",
-       "properties": {
-         "name": {
-           "type": "string"
-         },
-         "price": {
-           "type": "integer",
-           "format": "int32"
-         }
-       },
-       "required": [
-         "name",
-         "price"
-       ]
-     },
-     "AddProduct'DryCleaning'withUserroleAdminRequest": {
-       "title": "AddProduct'DryCleaning'withUserroleAdminRequest",
-       "example": {
-         "name": "Dry Cleaning",
-         "price": 10000
-       },
-       "type": "object",
-       "properties": {
-         "name": {
-           "type": "string"
-         },
-         "price": {
-           "type": "integer",
-           "format": "int32"
-         }
-       },
-       "required": [
-         "name",
-         "price"
-       ]
-     },
-     "AddProduct'Shoe&BagCare'withUserroleAdminRequest": {
-       "title": "AddProduct'Shoe&BagCare'withUserroleAdminRequest",
-       "example": {
-         "name": "Shoe & Bag Care",
-         "price": 18000
-       },
-       "type": "object",
-       "properties": {
-         "name": {
-           "type": "string"
-         },
-         "price": {
-           "type": "integer",
-           "format": "int32"
-         }
-       },
-       "required": [
-         "name",
-         "price"
-       ]
-     },
-     "AddProduct'Ironing'withUserroleAdminRequest": {
-       "title": "AddProduct'Ironing'withUserroleAdminRequest",
-       "example": {
-         "name": "Ironing",
-         "price": 8000
-       },
-       "type": "object",
-       "properties": {
-         "name": {
-           "type": "string"
-         },
-         "price": {
-           "type": "integer",
-           "format": "int32"
-         }
-       },
-       "required": [
-         "name",
-         "price"
-       ]
-     },
-     "AddOrderwithAuthenticationUSER_ARequest": {
-       "title": "AddOrderwithAuthenticationUSER_ARequest",
-       "example": {
-         "amount": 20
-       },
-       "type": "object",
-       "properties": {
-         "amount": {
-           "type": "integer",
-           "format": "int32"
-         }
-       },
-       "required": [
-         "amount"
-       ]
-     },
-     "AddOrderwithAuthenticationUSER_BRequest": {
-       "title": "AddOrderwithAuthenticationUSER_BRequest",
-       "example": {
-         "amount": 10
-       },
-       "type": "object",
-       "properties": {
-         "amount": {
-           "type": "integer",
-           "format": "int32"
-         }
-       },
-       "required": [
-         "amount"
-       ]
-     },
-     "UpdateStatusOrderbyIDwithbadstatusvalueRequest": {
-       "title": "UpdateStatusOrderbyIDwithbadstatusvalueRequest",
-       "example": {
-         "status": "invalid status value"
-       },
-       "type": "object",
-       "properties": {
-         "status": {
-           "type": "string"
-         }
-       },
-       "required": [
-         "status"
-       ]
-     },
-     "UpdateStatusOrderbyIDwithAdminRoleRequest": {
-       "title": "UpdateStatusOrderbyIDwithAdminRoleRequest",
-       "example": {
-         "status": "processing"
-       },
-       "type": "object",
-       "properties": {
-         "status": {
-           "type": "string"
-         }
-       },
-       "required": [
-         "status"
-       ]
-     }
-   },
-   "tags": [
-     {
-       "name": "[No Test] Prerequiresite"
-     },
-     {
-       "name": "Users"
-     },
-     {
-       "name": "Authentications"
-     },
-     {
-       "name": "Products"
-     },
-     {
-       "name": "Orders"
-     }
-   ]
- }
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Laundry API",
+    "contact": {}
+  },
+  "host": "localhost",
+  "basePath": ":5000/api",
+  "securityDefinitions": {},
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/auth/signup": {
+      "post": {
+        "summary": "Add User with valid payload",
+        "tags": [
+          "Users"
+        ],
+        "operationId": "AddUserwithvalidpayload",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "enum": [
+              "application/json"
+            ],
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AddUserwithvalidpayloadRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "Get All User with User role Admin",
+        "tags": [
+          "Users"
+        ],
+        "operationId": "GetAllUserwithUserroleAdmin",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/users/{idUserA}": {
+      "get": {
+        "summary": "Get User by Id with  valid owner access or role Admin",
+        "tags": [
+          "Users"
+        ],
+        "operationId": "GetUserbyIdwithvalidowneraccessorroleAdmin",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "idUserA",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete User by Id with  valid User  role Admin",
+        "tags": [
+          "Users"
+        ],
+        "operationId": "DeleteUserbyIdwithvalidUserroleAdmin",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "idUserA",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/auth/signin": {
+      "post": {
+        "summary": "Login with Valid Credential",
+        "tags": [
+          "Authentications"
+        ],
+        "operationId": "LoginwithValidCredential",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/LoginwithValidCredentialRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/products": {
+      "post": {
+        "summary": "Add Product with User role Admin",
+        "tags": [
+          "Products"
+        ],
+        "operationId": "AddProductwithUserroleAdmin",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AddProductwithUserroleAdminRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "get": {
+        "summary": "Get All Products",
+        "tags": [
+          "Products"
+        ],
+        "operationId": "GetAllProducts",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/products/{productId}": {
+      "get": {
+        "summary": "Get Product by Id",
+        "tags": [
+          "Products"
+        ],
+        "operationId": "GetProductbyId",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "Update Product with User role Admin",
+        "tags": [
+          "Products"
+        ],
+        "operationId": "UpdateProductwithUserroleAdmin",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UpdateProductwithUserroleAdminRequest"
+            }
+          },
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete Product with User role Admin",
+        "tags": [
+          "Products"
+        ],
+        "operationId": "DeleteProductwithUserroleAdmin",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/products/{idProductDryCleaning}/orders": {
+      "post": {
+        "summary": "Add Order with Authentication",
+        "tags": [
+          "Orders"
+        ],
+        "operationId": "AddOrderwithAuthentication",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AddOrderwithAuthenticationRequest"
+            }
+          },
+          {
+            "name": "idProductDryCleaning",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/orders": {
+      "get": {
+        "summary": "Get All Order with Authentication USER_ROLE_ADMIN",
+        "tags": [
+          "Orders"
+        ],
+        "operationId": "GetAllOrderwithAuthenticationUSER_ROLE_ADMIN",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/orders/{orderIdUserA}": {
+      "get": {
+        "summary": "Get Detail  Order by Id with not valid Owner access or Admin Role",
+        "tags": [
+          "Orders"
+        ],
+        "operationId": "GetDetailOrderbyIdwithnotvalidOwneraccessorAdminRole",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "orderIdUserA",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete  Order by Id with valid Owner access or Admin Role",
+        "tags": [
+          "Orders"
+        ],
+        "operationId": "DeleteOrderbyIdwithvalidOwneraccessorAdminRole",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "orderIdUserA",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/orders/{orderIdUserB}": {
+      "put": {
+        "summary": "Update Status Order  by ID with Admin Role",
+        "tags": [
+          "Orders"
+        ],
+        "operationId": "UpdateStatusOrderbyIDwithAdminRole",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UpdateStatusOrderbyIDwithAdminRoleRequest"
+            }
+          },
+          {
+            "name": "orderIdUserB",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "AddUserwithvalidpayloadRequest": {
+      "title": "AddUserwithvalidpayloadRequest",
+      "example": {
+        "username": "{{newUsernameA}}",
+        "email": "{{newEmailUserA}}",
+        "password": "{{newPasswordUserA}}",
+        "role": "user"
+      },
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "username",
+        "email",
+        "password",
+        "role"
+      ]
+    },
+    "LoginwithValidCredentialRequest": {
+      "title": "LoginwithValidCredentialRequest",
+      "example": {
+        "email": "{{newEmailUserA}}",
+        "password": "{{newPasswordUserA}}"
+      },
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "password"
+      ]
+    },
+    "AddProductwithUserroleAdminRequest": {
+      "title": "AddProductwithUserroleAdminRequest",
+      "example": {
+        "name": "Laundry Kiloan",
+        "price": 20000
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "price": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "name",
+        "price"
+      ]
+    },
+    "UpdateProductwithUserroleAdminRequest": {
+      "title": "UpdateProductwithUserroleAdminRequest",
+      "example": {
+        "name": "Ironing",
+        "price": 20000
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "price": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "name",
+        "price"
+      ]
+    },
+    "AddOrderwithAuthenticationRequest": {
+      "title": "AddOrderwithAuthenticationRequest",
+      "example": {
+        "amount": 20
+      },
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "amount"
+      ]
+    },
+    "UpdateStatusOrderbyIDwithAdminRoleRequest": {
+      "title": "UpdateStatusOrderbyIDwithAdminRoleRequest",
+      "example": {
+        "status": "processing"
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "status"
+      ]
+    }
+  },
+  "tags": [
+    {
+      "name": "Users"
+    },
+    {
+      "name": "Authentications"
+    },
+    {
+      "name": "Products"
+    },
+    {
+      "name": "Orders"
+    }
+  ]
+}
